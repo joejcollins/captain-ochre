@@ -1,7 +1,11 @@
-FROM gitpod/workspace-full
+  FROM gitpod/workspace-full
 
-# Install custom tools, runtimes, etc.
-# For example "bastet", a command-line tetris clone:
-# RUN brew install bastet
-#
-# More information: https://www.gitpod.io/docs/config-docker/
+USER root
+
+# Install Dropbear SSH server
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
+        dropbear \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+
+# Install Chisel
+RUN curl https://i.jpillora.com/chisel! | bash
