@@ -1,6 +1,10 @@
 image:
   file: .gitpod.Dockerfile
 
+ports:
+  - port: 8080
+    onOpen: open-preview
+
 tasks:
   - init: 'echo "TODO: Replace with init/build command"'
     command: 'echo "TODO: Replace with command to start project"'
