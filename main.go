@@ -21,10 +21,20 @@ func showCSV(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Show CSV"))
 }
 
+func createCSV(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodPost {
+        w.WriteHeader(405)
+        w.Write([]byte("Method Not Allowed"))
+        return
+    }
+    w.Write([]byte("Create CSV"))
+}
+
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/status", showCSV)
+	mux.HandleFunc("/status/update", createCSV)
 
 	log.Println("Starting server on :http-alt")
 	err := http.ListenAndServe(":http-alt", mux)
