@@ -1,45 +1,29 @@
 package main
 
 import (
-    "bufio"
-    "fmt"
-    "io/ioutil"
     "os"
+    "log"
+    "encoding/csv"
 )
 
-func check(e error) {
-    if e != nil {
-        panic(e)
+var data = [][]string{{"Line1", "Hello"}, {"Line2", "World"}}
+
+func main() {
+    file, err := os.Create("./data/processed/test.csv")
+    checkError("Cannot create file", err)
+    defer file.Close()
+
+    writer := csv.NewWriter(file)
+    defer writer.Flush()
+
+    for _, value := range data {
+        err := writer.Write(value)
+        checkError("Cannot write to file", err)
     }
 }
 
-func main() {
-
-    d1 := []byte("hello\ngo\n")
-    err := ioutil.WriteFile("/tmp/dat1", d1, 0644)
-    check(err)
-
-    f, err := os.Create("/tmp/dat2")
-    check(err)
-
-    defer f.Close()
-
-    d2 := []byte{115, 111, 109, 101, 10}
-    n2, err := f.Write(d2)
-    check(err)
-    fmt.Printf("wrote %d bytes\n", n2)
-
-    n3, err := f.WriteString("writes\n")
-    check(err)
-    fmt.Printf("wrote %d bytes\n", n3)
-
-    f.Sync()
-
-    w := bufio.NewWriter(f)
-    n4, err := w.WriteString("buffered\n")
-    check(err)
-    fmt.Printf("wrote %d bytes\n", n4)
-
-    w.Flush()
-
+func checkError(message string, err error) {
+    if err != nil {
+        log.Fatal(message, err)
+    }
 }
