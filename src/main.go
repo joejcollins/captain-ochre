@@ -5,21 +5,24 @@ import (
 	"net/http"
 )
 
-// home path, 
+// home handler requests to the root.
 func home(w http.ResponseWriter, r *http.Request) {
 	// Don't show paths that we don't have
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
-	log.Println("called")
+	path := r.URL.Path
+	log.Println(path)
 	w.Write([]byte("Hello from Here"))
 }
 
+// showCSV should show a selected CSV file from the processed directory
 func showCSV(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Show CSV"))
 }
 
+// createCSV just trying out a POST
 func createCSV(w http.ResponseWriter, r *http.Request) {
     if r.Method != http.MethodPost {
 		w.Write([]byte("Method Not Allowed"))
