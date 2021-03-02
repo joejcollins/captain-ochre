@@ -14,5 +14,5 @@ go run .
 
 ## Docker
 
-export GOPATH=/workspace/captain-ochre/src
+export GOPATH="/workspace/captain-ochre"
 docker build -t captain-ochre .

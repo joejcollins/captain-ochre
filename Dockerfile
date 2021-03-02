@@ -3,7 +3,8 @@ FROM golang:1.14
 WORKDIR /captain-ochre
 COPY . .
 
-RUN go get -d -v ./src
-RUN go install -v ./src
+ENV GOPATH="/captain-ochre"
+RUN go get -d -v ./src/captain-ochre
+RUN go install -v ./src/captain-ochre
 
 CMD ["app"]
