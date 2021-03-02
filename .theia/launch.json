@@ -4,11 +4,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "api",
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceRoot}/captain-ochre/src",
+      "program": "${workspaceRoot}/cmd/api/",
+      "env": {},
+      "args": []
+    },
+    {
+      "name": "mkreports",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceRoot}/cmd/mkreports/",
       "env": {},
       "args": []
     }

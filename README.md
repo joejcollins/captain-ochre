@@ -4,15 +4,14 @@
 
 <https://lets-go.alexedwards.net/>
 
-## Testing
+## Build and Run
 
 ```
-cd src
-go build .
-go run .
+go build ./...
 ```
 
 ## Docker
 
-export GOPATH="/workspace/captain-ochre"
+```
 docker build -t captain-ochre .
+```
