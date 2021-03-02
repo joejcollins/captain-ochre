@@ -4,14 +4,10 @@
 
 <https://lets-go.alexedwards.net/>
 
-## Build and Run
-
-```
-go build ./...
-```
 
 ## Docker
 
 ```
 docker build -t captain-ochre .
+docker run -it --rm captain-ochre
 ```
