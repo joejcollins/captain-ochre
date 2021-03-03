@@ -9,6 +9,6 @@
 
 ```
 docker build -t captain-ochre .
-docker run -it --rm --volume /workspace/captain-ochre:/workspace/captain-ochre --name captain-ochre captain-ochre
+docker run -it --rm --volume /workspace/captain-ochre:/workspace/captain-ochre --publish 8080:8080 --name captain-ochre captain-ochre
 docker exec -it boring_perlman /bin/sh
 ```
